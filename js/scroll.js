@@ -31,11 +31,18 @@ function scroll(){
 		var diff = percentDone - lastScroll;
 		webevent(d.we
 						,d.ue
-						,document.location.pathname+document.location.search 
+						,document.location.pathname+document.location.search
 							+ ': scroll ' + (percentDone*100).trunc(0) + '% (' + (($.now() - ts.start) / 1000 / 60).trunc(1) + 'm)'
 							+ '; ' + (1==compare(diff,0)?'+':'-') + (diff*100).trunc(0) + '% (' + (($.now() - ts.scroll) / 1000).trunc(0) + 's)'
 						);
 		ts.scroll = $.now();
 	}
 	lastScroll = percentDone;
+}
+
+var scroll2 = function(xp)
+{
+  $('html, body').animate({
+  scrollTop: $(xp).offset().top
+  });
 }
