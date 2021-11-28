@@ -1,31 +1,29 @@
 ﻿
 /* common/init.js */
 var _log=5;
-function log() { 
+function log() {
 	if('1'==qs('log')||'2'==qs('log')||'3'==qs('log')){ toast(sargs(arguments),_log); }
-  console.log.apply(console, arguments); 
+  console.log.apply(console, arguments);
 }
 
 function dbg() { if('1'!=qs('dbg')){return;}
 	if('2'==qs('log')||'3'==qs('log')){ toast(sargs(arguments),(_log*3)); }
-  console.log.apply(console, arguments); 
+  console.log.apply(console, arguments);
 }
 
 function sargs() {
-	//var args = [arguments[0].length];
-	//for (var a in arguments[0]) { args[a] = JSON.stringify(arguments[0][a]); }
 	var args = Array.prototype.slice.call(arguments[0]);
 	for (var a in args) { args[a] = JSON.stringify(args[a]); }
 	return replace(args.join(' '),new RegExp('"', 'gi'),'');
 }
 
-function warn() { 
+function warn() {
 	if('3'==qs('log')){ toast(sargs(arguments),_log); }
 	console.warn.apply(console, arguments); }
 
-window._s=window._s||'?'; 
+window._s=window._s||'?';
 
-window.dataLayer=window.dataLayer||[]; 
+window.dataLayer=window.dataLayer||[];
 
 window._u=window._u||JSON.parse(localStorage.getItem('_u'));
 
@@ -41,13 +39,12 @@ qs2=function(name,defval) { var results=new RegExp('[\
 
 function error(msg, url, line, col, err) {
   var lmsg = lower(trim(msg)), lerr = lower(trim(err ? err.toString() : '')), stk = (null !== err && undefined !== err && null !== err.stack && undefined !== err.stack ? err.stack : msg), rx0 = trim(stk).match(/at https?:\/\/(?!(www\.metastock\.com\/?)).*/gi), rx1 = trim(lmsg).match(/^(((uncaught |unhandled )?script error)|syntaxisfout)[.]?$/gi), rx2 = trim(lerr).match(/^(((uncaught |unhandled )?script error)|syntaxisfout)[.]?$/gi), lem = lower(trim(dataLayer['gtm.errorMessage'] && !empty(dataLayer['gtm.errorMessage']) ? dataLayer['gtm.errorMessage'] : '')), lpe = lower(trim(dataLayer['gtm.pageError'] && !empty(dataLayer['gtm.pageError']) ? dataLayer['gtm.pageError'] : ''));
-  if ((rx0 && 0 < rx0.length) || (rx1 && 0 < rx1.length) || (rx2 && 0 < rx2.length)) { return true; } 
-  else if (lmsg && !empty(lmsg) && ((lem == lmsg) || (lpe == lmsg))) { return true; } 
-  else if (lerr && !empty(lerr) && ((lem == lerr) || (lpe == lerr))) { return true; } 
+  if ((rx0 && 0 < rx0.length) || (rx1 && 0 < rx1.length) || (rx2 && 0 < rx2.length)) { return true; }
+  else if (lmsg && !empty(lmsg) && ((lem == lmsg) || (lpe == lmsg))) { return true; }
+  else if (lerr && !empty(lerr) && ((lem == lerr) || (lpe == lerr))) { return true; }
 	var cleaned = cleanerr(msg, '^uncaught( |:),^referenceerror( |:),^typeerror( |:),^syntaxerror( |:),not defined=undefined');
 	if ('1' === qs('dbg') && !nul(toast)) { toast(cleaned); }
-  warn('error()','rx0=',rx0,'rx1=',rx1,'rx2=',rx2,'msg=',lmsg,'err=',lerr,'gtm.errorMessage=',lem,'gtm.pageError=',lpe); 
-  /*if(null!==err&&undefined!==err&&null!==err.stack&&undefined!==err.stack){msg+='. '+err.stack;}*/
+  warn('error()','rx0=',rx0,'rx1=',rx1,'rx2=',rx2,'msg=',lmsg,'err=',lerr,'gtm.errorMessage=',lem,'gtm.pageError=',lpe);
   webevent(
       d.we
     , d.ue+'#err='+cleaned
@@ -60,7 +57,7 @@ function error(msg, url, line, col, err) {
 }
 
 function cleanerr(ein, scrub) {
-  var eout = ((!empty(ein) ? ein : '') + ''); 
+  var eout = ((!empty(ein) ? ein : '') + '');
   var sa = scrub.split(',');
   for (var s in sa) {
     var sc = sa[s], sp = sc.split('=');
@@ -74,15 +71,15 @@ function cleanerr(ein, scrub) {
 
 if('0'!==qs('err')){ window.onerror = function(msg,url,line,col,err) { return error(msg,url,line,col,err); }; }
 
-function prevent(e) { 
-  if (nul(e)) { return; } 
-  if (!nul(e.preventDefault)) { e.preventDefault(); } 
-  if (!nul(e.stopImmediatePropagation)) { e.stopImmediatePropagation(); } 
-  if (!nul(e.stopPropagation)) { e.stopPropagation(); } 
+function prevent(e) {
+  if (nul(e)) { return; }
+  if (!nul(e.preventDefault)) { e.preventDefault(); }
+  if (!nul(e.stopImmediatePropagation)) { e.stopImmediatePropagation(); }
+  if (!nul(e.stopPropagation)) { e.stopPropagation(); }
 }
 
-function lastevent(e) { 
-  return e || window.event; 
+function lastevent(e) {
+  return e || window.event;
 };
 
 function lasttarget(e) {
