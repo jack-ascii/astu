@@ -1,7 +1,7 @@
 ﻿
 /* common/pswipe.js */
 function photoswipe(options) {
-  console.log('photoswipe()', 'options=', options);
+  dbg('photoswipe()', 'options=', options);
 
   var xp = '.gallery'; var social = false; var captions = false;
   if (!nul(options)) {

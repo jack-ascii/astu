@@ -86,3 +86,6 @@ function lasttarget(e) {
   e = lastevent(e);
   return (e.target || e.srcElement);
 };
+
+function webevent(cat, act, lbl) { return this; }
+

@@ -1,25 +1,18 @@
 ﻿
-/* common/text.js */
-function trim(oin) { 
-  var sin = null !== oin && undefined !== oin ? oin : ""; 
-  if (null !== sin.trim && undefined !== sin.trim) { try { sin = sin.trim(); } catch (ex) { } } 
-  return sin;
-}
-
-function nul(inp) { 
-  if (null === inp || undefined === inp || "undefined" === inp) { return true; } 
+function nul(inp) {
+  if (null === inp || undefined === inp || "undefined" === inp) { return true; }
   return false;
 }
 
-function empty(inp) { 
-  if (nul(inp)) { return true; } 
-  if ("object" == typeof inp) { try { inp = inp[0].value; } catch (ex) { } } 
+function empty(inp) {
+  if (nul(inp)) { return true; }
+  if ("object" == typeof inp) { try { inp = inp[0].value; } catch (ex) { } }
   return 0 === trim(inp).length;
 }
 
-function unhtml(html) { 
-  var tmp = document.createElement('DIV'); tmp.innerHTML = html; 
-  return tmp.textContent || tmp.innerText || ''; 
+function unhtml(html) {
+  var tmp = document.createElement('DIV'); tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || '';
 }
 
 function trim(oin) {
@@ -59,3 +52,8 @@ Number.prototype.trunc = function(digits) {
         m = this.toString().match(re);
     return m ? parseFloat(m[1]) : this.valueOf();
 };
+
+function hash(target) {
+  if (!nul(target)) document.location.hash = target;
+  return document.location.hash.split('&')[0];
+}
