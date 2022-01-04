@@ -1,0 +1,177 @@
+<p><a href="javascript:ja.ui.bottom()">well, i uh..</a></p>
+
+<div id='quotelist'></div>
+<div id='hiddenlist' style='display: none;'></div>
+
+<p id='controls' class="hide">
+  <a class='control shuffle hide' href="javascript:controls.shuffle()">shuffle</a>
+  <a class='control sort hide' href="javascript:controls.sort()">sort</a>
+  <a class='control pause hide' href="javascript:controls.pause()">pause</a>
+  <a class='control play hide' href="javascript:controls.play()">play</a>
+  <a class='control stop hide' href="javascript:controls.stop()">stop</a>
+</p>
+
+<p class='nextprev'>
+  <br/>
+  <a class='newer' href="#naked" onclick="ja.blog.last()">naked you are, blue like the night in cuba</a>
+</p>
+
+<component :is="'style'">
+  #myquote, #nextquote { text-align: center; width: 100%; }
+  #controls { border-top: 1px solid #333; padding-top: 10px; }
+  #controls a { display: inline-block; padding: 0 10px !important; }
+  @media only screen and (max-width: 600px) {
+    .side.left { display: none !important; }
+  }
+  .post .labels, .post > .nextprev, .pages .words { display: none; }
+</component>
+
+<component :is="'script'">
+  log = ja.log.write;
+  dbg = ja.log.dbg;
+
+  var options = {
+    q: 0,
+    qid: '',
+    renderto: null,
+    play: true,
+    pause: false,
+    align: -1,
+	scanning: false,
+  };
+  window.options = window.options || options;
+
+  var actions = {
+    render: function() {
+      options.renderto = ja.text.clearto(options.renderto);
+      dbg('actions:render()', options);
+
+      if (ja.quote.quotes.length > options.q &&
+          ja.quote.quotes.length > 0) {
+        var qt = ja.quote.quotes[options.q++];
+        dbg('actions.render()', 'q=', (options.q - 1), 'qt=', qt);
+
+        var el = ja.quote.wrap('#quotelist', qt);
+        var l = parseInt(el.text().length / 50);
+        if (l > 4) {
+          if (++options.align > 1) options.align = 0;
+          if (options.align) el.addClass('left');
+          else el.addClass('right');
+        }
+        for (var i = 0; 10 >= i; i++) el.removeClass('q'+i);
+        el.addClass('q'+l).hide().removeClass('hide').show('slow');
+
+        dbg('actions.render()', 'el=', el[0], 'quotes=', $('#quotelist').find('.quote').length);
+
+        var delay = 0;
+        if (options.play) {
+          delay = ja.quote.timeout(qt.txt);
+          ja.ui.scroll2('#' + el.attr('id'));
+        }
+
+        dbg('actions.render()', 'delay=', delay);
+      }
+      options.renderto = setTimeout(function () { actions.render(); }, delay);
+  	},
+  };
+
+  var controls = {
+    show: function (xp) { $(xp).removeClass('hide').show(); },
+    hide: function (xp) { $(xp).addClass('hide').hide(); },
+    shuffle: function () {
+      log('actions:shuffle()', options);
+      var last = ja.quote.quotes.pop();
+      ja.quote.quotes.sort((a, b) => 0.5 - Math.random());;
+      ja.cache.set('quote.quotes', ja.quote.quotes);
+      ja.quote.quotes.push(last);
+      scan();
+      controls.auto(true);
+    },
+    sort: function () {
+      log('actions:sort()', options);
+      ja.quote.quotes.sort((a, b) => (a.txt > b.txt) ? 1 : -1);
+      ja.cache.set('quote.quotes', ja.quote.quotes);
+      controls.auto(true);
+    },
+    auto: function (playing) {
+      log('actions:play()', options);
+      ja.options.quoteto = ja.text.clearto(ja.options.quoteto);
+      ja.options.pause = true;
+      options.q = 0;
+      options.play = playing;
+      $('#quotelist .quote').remove();
+      controls.show('.control.sort,.control.shuffle');
+      if (options.play) controls.show('.control.pause,.control.stop');
+      ja.ui.top();
+      actions.render();
+    },
+		pause: function () {
+      options.renderto = ja.text.clearto(options.renderto);
+      options.pause = true;
+      controls.show('.control.play');
+      controls.hide('.control.pause');
+		},
+		play: function () {
+      ja.options.quoteto = ja.text.clearto(ja.options.quoteto);
+      options.pause = false;
+      options.play = true;
+      actions.render();
+      controls.hide('.control.play');
+      controls.show('.control.pause,.control.stop');
+		},
+    stop: function() {
+      options.renderto = ja.text.clearto(options.renderto);
+      log('actions:stop()', options);
+      options.play = false;
+      actions.render();
+      setTimeout(function () {
+        options.renderto = ja.text.clearto(options.renderto);
+      }, 500);
+      controls.hide('.control.stop,.control.pause');
+      controls.show('.quote,.control.play');
+      ja.options.pause = false;
+      myquote();
+    },
+  };
+
+  function scan() {
+    log('scan()', options.scanning);
+    if (options.scanning) return;
+    options.scanning = true;
+    ja.quote.scan({
+      user: '139192756-jack-ascii',
+      callback: function () {
+        log('scan()done');
+        options.scanning = false;
+        ja.options.pause = false;
+        myquote();
+      },
+    });
+  }
+
+  $(document).ready(function(){
+    log('$()', options);
+
+    scan();
+
+    ja.wait(
+      'quotes',
+      function() { return $('#quotelist').is(':visible'); },
+      function() {
+        dbg('$()quotes', 'options=', options, 'myquote=', $('#myquote').text(), 'ja.quote._to=', ja.quote._to, 'ja.options.quoteto=', ja.options.quoteto);
+
+        ja.options.quoteto = ja.text.clearto(ja.options.quoteto);
+        ja.options.pause = true;
+
+        dbg('$()quotes', 'ja.quote._to=', ja.quote._to, 'ja.options.quoteto=', ja.options.quoteto);
+
+        if (ja.text.empty($('#myquote').text()))
+          $('#myquote').html('now the word is naked');
+
+        dbg('$()quotes', 'myquote=', $('#myquote').text());
+
+        controls.auto(true);
+      }
+    );
+  });
+</component>

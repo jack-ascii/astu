@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PN5HK9R');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <b:include data='blog' name='all-head-content'/>
+  <title><data:blog.pageTitle/></title>
+  <link href="https://cdn.jsdelivr.net/gh/jack-ascii/astu@latest/css/grid.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/jack-ascii/astu@20211230-1010p/css/global.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/jack-ascii/astu@20211230-1010pp/css/blog.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/jack-ascii/astu@latest/css/black.min.css" rel="stylesheet"/>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' crossorigin='anonymous' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' referrerpolicy='no-referrer'/>
+  <b:skin>
+    <![CDATA[
+    header h1 { display: none; }
+    .loading #nextquote, .loading .archive.pre, .loading .archive.post, .slides #nextquote, .muse { display: none; }
+    #nextquote { display: none; }
+    #nextquote:before { content: ''; }
+    .pswp .play, .pswp .pause { background-image: none !important; }
+    .labels .all,.pages .home{order:999}li.canyon{order:89}li.wood{order:88}li.cotton{order:87}li.middle,li.pine,li.settlement{order:85}li.creek{order:85}li.cemetery{order:82}li.city{order:81}li.silver{order:75}li.lake{order:74}li.salt{order:73}li.island{order:70}li.stansbury{order:69}
+    .post .labels { display: none; }
+    .post .date { display: none !important; }
+    ]]>
+  </b:skin>
+</head>
+
+<body class='flex w100 loading'>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN5HK9R"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id='app' class='center'>
+    <div id='errors'/>
+    <ja-app>
+      <ja-header
+        :description='&apos;a naked body is the only extension of the imaginary line that unites us with the unknown&apos;'
+        :images='[
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEhnTLEkzZ2MO-tqRHURjCix1G1QTggdz-Wtt2SXmMuuqvMNUbDFj2fJxMitlMkveBa0for4S63UTV0LLSk4fcZ5ImUe9KXWQd_RGD3gBoXrWCud5LB1J6rBDHgIO-n9wkp7cqLyL2xKKVAO5BncNVD_P0_Gu91cwkjAT9smwUIt0ZxGcMAunuklv6Yg1A=s1200&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEjrKrkxiU8qYhdq_HlfnPbV8FZkmJkbOcU_1ycZtcZXrGM2J7yRmXbzTdhWrNCDMmt7xj1UjvUrdfd32jV7MuGQmNHutx1mYRROIgcmfJlLtLhm_UBHo4gcKmCvU0B_XmBPLBH3xbyyNoWucUfAMsFByWulru11ZXiJ83wcKuZ0apPNeg9tMPYHSjDYaw=s5388&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEiHIhS1bdjRjnzfHgj5qbGoUcb3XuAwPhwkiEEVEevBX2X3D84FiBPGBOm_CNXM5trjx17n-dTkUEeoL0LSUH5hh8T46RrzVQnRN1Zy9nN2lel-xWFRaLvRvXMq3VwOIsHOG3YZ-27aSYJuKoHUpBPjUbaZGd7I8ULCaqKDHmx3BufB4KUipj53hLiXuw=s4898&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEj0UWvctc_WUIfWcC0iUHWq9uudxX3xxUSnhA0Qo5grPc8T6mMo3np7nm4Ica-RFMQuCXqaub-aJrJjJACWrOAjgij0jXk_catnm892Ef-QenU-pEeRGn7rIBTXZFVdM_SrBcNfQrChtEIDdHkVergDoEH8GhxVKu0A7EyUwAGHiadOU0_Zuo7gjxAnPA=s5332&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEiqdMu-E70bXDyQQcnl-aif_9lXD7qBnniZB1pGfa2cHF1TvFDDKodb46Hq5Y6LVfh__nbfDf1BmRkwLFEZLz9bRxJ1WFy-KpS4MxdjDl2okadIGAYkILe73IQF3mgsszVKaT1QCrEl8YG_mN9Qag1FBttOKpWelqH_IG2ZlA2okvEt4VGiKnmWFwt-zw=s6000&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEhZQQKy69y-Z1FundqMGQj2yxSD1Ou0daUpFbWy014T3EchoChFVGjXHuCmnsxmxPkOnRiKb99UxBVjT0B6zBEL15x4vVCHJDo8UDh1g398CGOJkX8yDttxjbSME1lqbP5g_dWQKmrhpWG2ASOxiJc7pvCHvY1sVRiijBHF686x8zeEOKH80vhvD9f9tQ=s4895&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEgkGDsJa4gUH3ATWIRIq6c8W6MTX-KZa8NOtQNUA1yVBOJbtEJ1MehhmGD7aXR-t5YqqDZCegSMTy9KvLgWBHbJh78QDgauju2b9FknfkTG4N10Cu_RfiBNC3jneV6ZONf_r8F29zCc_UijmZrVQUGRdwipKTAA0fdl0CiDwEC7RncuNbiB_btkFxGKMw=s4898&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEgriG1XD_dd0d47InOIUHEwBzcoglOKe9hAsFMuEk3S3uYPyRr3hMO-VKISdgaBjjiXxJ8dcnCQwo8GAZBdwk00Qvy7X9cjAlyv-D0SLzzS_ydC0RzkD9khg8cJ5UxrAP3cwoaAubr8qSFV7NsFDeoDlyEw06en1qhdR_9tTOEgPUVMBEKOrP-vZ-AlVw=s5350&apos;,
+          &apos;https://blogger.googleusercontent.com/img/a/AVvXsEiDvIRkH0_e99e3U-So01nuO09qyvZBVR1mFhSHrljB0O5OK00OS9d35HVgy6ISd0ms5WZUeQp3R0_jjZJoFuTbeI7EgvkK6tOZeK8M4eJXuZzP7fKVJF1ARp0TTDu6YsI1kI2-KKFvVDxYW-R6Hm37M1kPdtCIdPTq1VI-3hivq08yupB2lwj9lyOoyQ=s5331&apos;
+          ]'
+        >
+      </ja-header>
+      <ja-main>
+        <ja-side :flex='&apos;22%&apos;' css='left'>
+          <div id='quotes' class='quotes w100'>
+            <div class='quote sticky -border'>
+              <div id="myquote">
+                <img class="splash" src="https://blogger.googleusercontent.com/img/a/AVvXsEimgjckEAshrsGIQ2G6M1KFgS99MF5D1DgBiN8xpt8Tf4PVYv29SfaqVmvgQKdr4bXSEZA-38ChJKQ5JkClU78KkvBeTeDMu6JfOGrqiCK_Sdo2F6Cn_sXDR5_0L2_RYZd6nDE8k7cFdwA_xGVfOhzyeB3qTxGPrD1isQRKWcntJuziM579SnBKEgEGRg"/>
+              </div>
+              <a id="nextquote" href="javascript:myquote()">>></a>
+            </div>
+          </div>
+        </ja-side>
+        <ja-content :flex='&apos;50%&apos;'>
+          <div id='main' class='-border w100'>
+            <ja-blog :items='posts'/>
+          </div>
+        </ja-content>
+        <ja-side :flex='&apos;22%&apos;' css='right'>
+          <div class='w100'>
+            <div id='links' class='-border sticky w100'>
+              <ul class='archive pre'>
+                <li><a href="#more" onclick="ja.ui.bottom()">more</a></li>
+              </ul>
+              <ja-links :css='&apos;archive main&apos;' :items='archive'/>
+              <ul class='archive post'>
+                <li><a href="#" onclick="ja.ui.top()">top</a></li>
+              </ul>
+            </div>
+          </div>
+        </ja-side>
+      </ja-main>
+      <ja-footer :css='&apos;center&apos;'>
+        <ja-links :css='&apos;labels&apos;' :items='labels'/>
+        <ja-links :css='&apos;pages center w100&apos;' :items='pages'/>
+      </ja-footer>
+    </ja-app>
+  </div>
+
+  <script src='https://cdn.jsdelivr.net/gh/jack-ascii/astu@20211230-1010p/js/astu.min.js'/>
+  <script src='https://unpkg.com/vue@next'/>
+  <!--<script src="https://cdn.jsdelivr.net/npm/vue@3.2.20/dist/vue.cjs.prod.js"></script>-->
+
+  <b:section class='js hide' id='js' name='Js' showaddelement='yes'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+      <b:widget-settings>
+        <b:widget-setting name='showDateHeader'>true</b:widget-setting>
+        <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+        <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+        <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+        <b:widget-setting name='style.urlcolor'>#008000</b:widget-setting>
+        <b:widget-setting name='showAuthor'>true</b:widget-setting>
+        <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
+        <b:widget-setting name='style.linkcolor'>#0000ff</b:widget-setting>
+        <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+        <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='reactionsLabel'/>
+        <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+        <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+        <b:widget-setting name='showLabels'>true</b:widget-setting>
+        <b:widget-setting name='showLocation'>false</b:widget-setting>
+        <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+        <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+        <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+        <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+        <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+        <b:widget-setting name='showReactions'>false</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main' var='top'>
+        <b:loop values='data:posts' var='post'>
+          <script>
+            var cached = false;
+            for (var p in ja.blog.posts) {
+              var post = ja.blog.posts[p];
+              if (&#39;<data:post.id/>&#39; == post.id) { cached = true; break; }
+            }
+            if (!cached)
+              ja.blog.posts.push({
+                id: &#39;<data:post.id/>&#39;,
+                title: &#39;<data:post.title/>&#39;,
+			          <b:if cond='data:post.dateHeader'>
+                  dateHeader: &#39;<data:post.dateHeader/>&#39;,
+			          </b:if>
+			          <b:if cond='data:post.link'>
+                  link: &#39;<data:post.link/>&#39;,
+                </b:if>
+          			<b:if cond='data:newerPageUrl'>
+                  newer: &#39;<data:newerPageUrl/>&#39;,
+                </b:if>
+          			<b:if cond='data:olderPageUrl'>
+                  older: &#39;<data:olderPageUrl/>&#39;,
+                <b:else/>
+                  older2: &#39;/&#39;,
+                </b:if>
+                get body() { return $(&#39;#post<data:post.id/>&#39;).html(); },
+                labels: [
+                  <b:loop values='data:post.labels' var='label'>
+                  {
+                    url: &#39;<data:label.url/>&#39;,
+                    name: &#39;<data:label.name/>&#39;,
+                  },
+                  </b:loop>
+                ],
+              });
+          </script>
+			    <div expr:id='&quot;post&quot;+data:post.id'>
+            <data:post.body/>
+          </div>
+        </b:loop>
+      </b:includable>
+      <b:includable id='backlinkDeleteIcon' var='backlink'/>
+      <b:includable id='backlinks' var='post'/>
+      <b:includable id='comment-form' var='post'/>
+      <b:includable id='commentDeleteIcon' var='comment'/>
+      <b:includable id='comment_count_picker' var='post'/>
+      <b:includable id='comment_picker' var='post'/>
+      <b:includable id='comments' var='post'/>
+      <b:includable id='feedLinks'/>
+      <b:includable id='feedLinksBody' var='links'/>
+      <b:includable id='iframe_comments' var='post'/>
+      <b:includable id='mobile-index-post' var='post'/>
+      <b:includable id='mobile-main' var='top'/>
+      <b:includable id='mobile-nextprev'/>
+      <b:includable id='mobile-post' var='post'/>
+      <b:includable id='nextprev'/>
+      <b:includable id='post' var='post'/>
+      <b:includable id='postQuickEdit' var='post'/>
+      <b:includable id='shareButtons' var='post'/>
+      <b:includable id='status-message'/>
+      <b:includable id='threaded-comment-form' var='post'/>
+      <b:includable id='threaded_comment_js' var='post'/>
+      <b:includable id='threaded_comments' var='post'/>
+    </b:widget>
+    <b:widget id='HTML1' locked='true' title='js' type='HTML' version='1'>
+      <b:widget-settings>
+        <b:widget-setting name='content'>
+        <![CDATA[
+          ja.options = {
+            tries: 0,
+            max: 20,
+            quoteto: null,
+            pause: false,
+          };
+
+          window.myquote = function() {
+            ja.log.dbg('myquote()');
+            ja.options.quoteto = ja.text.clearto(ja.options.quoteto);
+            if (ja.options.pause) return;
+
+            ja.quote.get({
+              user: '139192756-jack-ascii',
+              target: '#myquote',
+              callback: function() {
+                if (ja.options.pause) return;
+                var myquote = $('#myquote');
+                var txt = myquote.text();
+                for (var i = 0; i <= 10; i++) myquote.removeClass('q'+i);
+                myquote.addClass('q'+parseInt(txt.length / 50));
+                myquote.removeClass('left center right');
+                var n = parseInt(100 * Math.random()) % 3;
+                if (0 == n) myquote.addClass('center');
+                if (1 == n) myquote.addClass('left');
+                if (2 == n) myquote.addClass('right');
+                var delay = ja.quote.timeout(txt);
+                ja.options.quoteto = setTimeout(function(){ window.myquote() }, delay);
+                ja.log.dbg('myquote()cb', txt, delay, ja.options.quoteto);
+              },
+            });
+          }
+
+          function toggle() {
+            if (ja.slides.options.pause) {
+              $('.pswp .pause').addClass('hide');
+              $('.pswp .play').removeClass('hide');
+            }
+            else {
+              $('.pswp .play').addClass('hide');
+              $('.pswp .pause').removeClass('hide');
+            }
+          }
+
+          function play() {
+            ja.slides.options.pause = false;
+            toggle();
+            ja.slides.play();
+          }
+
+          function pause() {
+            ja.slides.options.index = -1;
+            ja.slides.options.pause = true;
+            toggle();
+          }
+
+          function poems() {
+            var l = 0;
+            $('.poem').each(function(){
+              var n = parseInt(100 * Math.random()) % 3;
+              while (n === l) n = parseInt(100 * Math.random()) % 3;
+              l = n;
+              $(this).addClass('n'+n);
+              if (1 == n) $(this).addClass('left');
+              if (2 == n) $(this).addClass('right');
+            });
+          }
+
+          function ready() {
+            if (ja.text.nul(window.google_tag_manager) ||
+                '?'===ja.geo.sz()) {
+              $('#myquote').html('<p>;p</p>');
+              if (ja.options.tries++ < ja.options.max) setTimeout(function(){ ready(); },250);
+              else ja.log.warn('blocked');
+              return;
+            }
+
+            ja.gtm.webevent('page:load');
+            setTimeout(function(){ myquote(); }, 250);
+
+            if ('1'===ja.qs2('clear')) ja.cache.clear();
+
+            var delay = ja.cache.get('lastvisit') ? 1 : 4500;
+            var welcome = ja.cache.get('welcome') || false;
+            if (welcome || ja.text.empty(ja.qs2('pid'))) delay += 1500;
+
+            ja.blog.init({
+              welcome: '/p/muse.html',
+              psxp: '#app',
+              wait: delay,
+              callback: function() {
+                ja.log.dbg('$ready(): blog.init()cb');
+                poems();
+
+                if (0 === ja.text.indexof(document.location.pathname, '/search'))
+                  $('.post .title').show();
+
+                var flbls = $('footer .labels');
+                if (flbls.find('li').length) $('<li class="all"><a href="/search/?q=.&max-results=999">all</a></li>').appendTo(flbls);
+
+                $('<li class="home"><a href="/">home</a></li>').appendTo($('footer .pages'));
+
+                $('a')
+                  .filter(function(){ return '/'===$(this).attr('href'); })
+                  .attr('href','#')
+                  .click(function(e){
+                    if ('/' !== document.location.pathname) ja.blog.home();
+                  });
+
+                ja.wait(
+                  'pswipe',
+                  function(){ return !ja.text.nul(ja.photoswipe.initoptions); },
+                  function(){
+                  });
+              },
+	            //if ('1' == ja.qs('dbg')) $('<p class="dbg center">' + $(window).width()+ 'x' + $(window).height() + '</p>').appendTo($('body'));
+            });
+          }
+
+          $(document).ready(function () {
+            ja.log.dbg('$ready()', app.options);
+            ready();
+          });
+        ]]>
+        </b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+        <script id='js-site'>
+          <data:content/>
+        </script>
+      </b:includable>
+    </b:widget>
+  </b:section>
+
+  <script crossorigin='anonymous' integrity='sha512-2R4VJGamBudpzC1NTaSkusXP7QkiUYvEKhpJAxeVCqLDsgW4OqtzorZGpulE3eEA7p++U0ZYmqBwO3m+R2hRjA==' referrerpolicy='no-referrer' src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js'/>
+  <script crossorigin='anonymous' integrity='sha512-SxO0cwfxj/QhgX1SgpmUr0U2l5304ezGVhc0AO2YwOQ/C8O67ynyTorMKGjVv1fJnPQgjdxRz6x70MY9r0sKtQ==' referrerpolicy='no-referrer' src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js'/>
+  <link crossorigin='anonymous' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.css' integrity='sha512-yxWNfGm+7EK+hqP2CMJ13hsUNCQfHmOuCuLmOq2+uv/AVQtFAjlAJO8bHzpYGQnBghULqnPuY8NEr7f5exR3Qw==' referrerpolicy='no-referrer' rel='stylesheet'/>
+  <link crossorigin='anonymous' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css' integrity='sha512-Rck8F2HFBjAQpszOB9Qy+NVLeIy4vUOMB7xrp46edxB3KXs2RxXRguHfrJqNK+vJ+CkfvcGqAKMJTyWYBiBsGA==' referrerpolicy='no-referrer' rel='stylesheet'/>
+
+	<div aria-hidden='true' class='pswp' role='dialog' tabindex='-1'>
+		<div class='pswp__bg'/>
+		<div class='pswp__scroll-wrap'>
+			<div class='pswp__container'>
+				<div class='pswp__item'/>
+				<div class='pswp__item'/>
+				<div class='pswp__item'/>
+			</div>
+			<div class='pswp__ui pswp__ui--hidden'>
+				<div class='pswp__top-bar'>
+					<div class='pswp__counter'/>
+					<button class='pswp__button pswp__button--close close' title='Close (Esc)'/>
+					<button class='pswp__button pswp__button--share share' title='Share'/>
+					<button class='pswp__button pswp__button--fs fs' title='Toggle fullscreen'/>
+					<button class='pswp__button pswp__button--zoom zoom' title='Zoom in/out'/>
+					<button class='pswp__button pswp__button--play play' title='Play'><a href="javascript:play()">play</a></button>
+					<button class='pswp__button pswp__button--pause pause hide' title='Pause'><a href="javascript:pause();">pause</a></button>
+					<div class='pswp__preloader'>
+						<div class='pswp__preloader__icn'>
+							<div class='pswp__preloader__cut'>
+								<div class='pswp__preloader__donut'/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='pswp__share-modal pswp__share-modal--hidden pswp__single-tap'>
+					<div class='pswp__share-tooltip'/>
+				</div>
+				<button class='pswp__button pswp__button--arrow--left' title='Previous (arrow left)'/>
+				<button class='pswp__button pswp__button--arrow--right' title='Next (arrow right)'/>
+				<div class='pswp__caption'>
+					<div class='pswp__caption__center'/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
