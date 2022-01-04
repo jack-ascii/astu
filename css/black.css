@@ -1,0 +1,9 @@
+﻿body {
+	background-color: black;
+	color: white;
+}
+
+a, .date {
+	text-decoration: none;
+	color: #888888;
+}
