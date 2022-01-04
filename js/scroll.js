@@ -1,48 +1,46 @@
 ﻿
-/* common/scroll.js */
-var lastScroll = 0
-	, ts = {
-				start:$.now()
-			, scroll:$.now()
-		}
-	, scrolltimeout = null
-	, scrolldone = false
-	, scrollwait = 1500
-	;
+ja.ui = ja.ui || {};
 
-function scroll(){
-	var scrollHeight = $(document).height();
-	var windowHeight = $(window).height();
-	dbg('scroll()','scrollHeight=',scrollHeight,'windowHeight=',windowHeight);
-	if (1 != compare(scrollHeight,windowHeight)) { return; }
+ja.ui.defaults = ja.ui.defaults || {};
+ja.ui.defaults.scrollbase = 'html,body';
+ja.ui.defaults.scrollduraction = 500;
 
-	var windowScroll = $(window).scrollTop();
-	var scrollPosition = windowHeight + windowScroll;
-	dbg('scroll()','windowScroll=',windowScroll,'scrollPosition=',scrollPosition);
-	if (0 == scrollPosition) { return; }
+ja.ui.options = ja.ui.options || {};
+ja.ui.options.pausescroll = false;
 
-	var percentDone = 1 - ((scrollHeight - scrollPosition) / scrollHeight);
-	dbg('scroll()','percentDone=',percentDone,'lastScroll=',lastScroll);
-
-	if (1 == percentDone){ scrolldone = true; /**/ scrollwait = 1000*30; }
-	if (0 == lastScroll) { lastScroll = 1 - ((scrollHeight - windowHeight) / scrollHeight); }
-
-	if (lastScroll != percentDone) {
-		var diff = percentDone - lastScroll;
-		webevent(d.we
-						,d.ue
-						,document.location.pathname+document.location.search
-							+ ': scroll ' + (percentDone*100).trunc(0) + '% (' + (($.now() - ts.start) / 1000 / 60).trunc(1) + 'm)'
-							+ '; ' + (1==compare(diff,0)?'+':'-') + (diff*100).trunc(0) + '% (' + (($.now() - ts.scroll) / 1000).trunc(0) + 's)'
-						);
-		ts.scroll = $.now();
-	}
-	lastScroll = percentDone;
+ja.ui.top = function(duration) {
+  var top = $('.post .title');
+  if (!top.length) top = $('main');
+  if (!top.length) top = $('body');
+  ja.ui.scroll({target: top, duration: duration});
 }
 
-var scroll2 = function(xp)
+ja.ui.bottom = function(duration) {
+  var bottom = $('footer');
+  if (!bottom.length) bottom = $('body');
+  ja.ui.scroll({target: bottom, duration: duration});
+}
+
+ja.ui.scroll2 = function(target, duration)
 {
-  $('html, body').animate({
-  scrollTop: $(xp).offset().top
-  });
+  ja.ui.scroll({target: target, duration: duration});
+}
+
+ja.ui.scroll = function(options) {
+  if (ja.text.nul(options.target)) { ja.log.write('ja.ui.scroll2el(): missing target'); return; }
+
+  if (!(options.target instanceof jQuery)) options.target = $(options.target);
+  if (!options.target.length) { ja.log.write('ja.ui.scroll2el(): empty target'); return; }
+
+  if (ja.text.nul(options.base)) options.base = ja.ui.defaults.scrollbase;
+  if (ja.text.nul(options.duration)) options.duration = ja.ui.defaults.scrollduraction;
+  if (ja.text.nul(options.offset)) options.offset = 0;
+
+  ja.log.dbg('ja.ui.scroll()', 'options=', options);
+
+  ja.ui.options.pausescroll = true;
+  $(options.base).animate(
+    { scrollTop: options.target.offset().top - options.offset },
+    options.duration);
+  setTimeout(function () { ja.ui.options.pausescroll = false; }, (options.duration + 1));
 }
