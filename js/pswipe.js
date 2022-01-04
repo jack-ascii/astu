@@ -1,21 +1,29 @@
 ﻿
-/* common/pswipe.js */
-function photoswipe(options) {
-  dbg('photoswipe()', 'options=', options);
+ja.photoswipe = ja.photoswipe || {};
+ja.photoswipe.defaults = ja.photoswipe.defaults || {};
+ja.photoswipe.defaults.xp = ja.photoswipe.defaults.xp || '.gallery';
 
-  var xp = '.gallery'; var social = false; var captions = false;
-  if (!nul(options)) {
-    if (!empty(options.xp)) xp = options.xp;
-    if (!nul(options.social)) social = options.social;
-    if (!nul(options.captions)) captions = options.captions;
-  }
+ja.photoswipe.init = function(options) {
+  options = options || {};
+  options.xp = options.xp || ja.photoswipe.defaults.xp;
+  options.social = options.social || false;
+  options.captions = options.captions || true;
+  options.togglecontrols = options.togglecontrols || false;
+
+  ja.log.dbg('ja.photoswipe.init()', 'options=', options);
+  ja.photoswipe.initoptions = options;
 
   'use strict';
 
 (function($){
-  var container = [];
+  ja.photoswipe.initoptions.container = [];
 
-  $(xp).find('figure').each(function(){
+  ja.photoswipe.initoptions.target = $(options.xp);
+
+  ja.photoswipe.initoptions.figures = ja.photoswipe.initoptions.target.find('figure');
+  ja.log.dbg('ja.photoswipe.init()', 'figures=', ja.photoswipe.initoptions.figures);
+  ja.photoswipe.initoptions.figures.each(function(){
+    ja.log.dbg('ja.photoswipe.init()', 'figure=', $(this)[0]);
     var $link = $(this).find('a'),
       item = {
         src: $link.attr('href'),
@@ -24,42 +32,54 @@ function photoswipe(options) {
         title: $link.data('caption')
       };
     $(this)
-      .attr('index', container.length)
-      .attr('id', 'figure'+container.length);
-    container.push(item);
+      .attr('index', ja.photoswipe.initoptions.container.length)
+      .attr('id', 'figure'+ja.photoswipe.initoptions.container.length);
+    ja.log.dbg('ja.photoswipe.init()', '$link=', $link, 'item=', item);
+    ja.photoswipe.initoptions.container.push(item);
+    ja.log.dbg('ja.photoswipe.init()', 'ja.photoswipe.initoptions.container=', ja.photoswipe.initoptions.container);
   });
 
-  $(xp+' figure a').click(function(event){
-    event.preventDefault();
+  ja.photoswipe.initoptions.links = ja.photoswipe.initoptions.target.find('figure a');
+  ja.log.dbg('ja.photoswipe.init()', 'links=', ja.photoswipe.initoptions.links);
+  ja.photoswipe.initoptions.links.click(function(event){
+    ja.event.prevent(event);
+    ja.log.dbg('ja.photoswipe.link.click()', $(this)[0]);
+
     var $pswp = $('.pswp')[0],
       options = {
         index: parseInt($(this).parent('figure').attr('index')),
         bgOpacity: 0.85,
         showHideOpacity: true,
-        shareEl: social,
-        captionEl: captions,
+        shareEl: ja.photoswipe.initoptions.social,
+        captionEl: ja.photoswipe.initoptions.captions,
+        tapToToggleControls: ja.photoswipe.initoptions.togglecontrols,
       };
-    var gallery = window._gallery = new PhotoSwipe($pswp, PhotoSwipeUI_Default, container, options);
-    gallery.init();
-    gallery.listen('close', function() {
-      scroll2('#figure'+_gallery.getCurrentIndex());
-    });
+
+    ja.log.dbg('ja.photoswipe.link.click()', '$pswp=', $pswp, 'options=', options);
+
+    ja.photoswipe.initoptions.gallery =
+      new PhotoSwipe($pswp, PhotoSwipeUI_Default, ja.photoswipe.initoptions.container, options);
+
+    ja.log.dbg('ja.photoswipe.link.click()', 'ja.photoswipe.initoptions.gallery=', ja.photoswipe.initoptions.gallery);
+
+    ja.photoswipe.initoptions.gallery.init();
   });
 
-  var qpid = qs('pid');
-  if (qpid) {
-    var npid = parseInt(qpid);
-    if (!Number.isNaN(npid))
-    {
-      var gallery = $('figure img');
-      if (gallery.length >= npid)
+  setTimeout(function () {
+    var qpid = ja.qs2('pid');
+    if (qpid) {
+      var npid = parseInt(qpid);
+      if (!Number.isNaN(npid))
       {
-        var a = $(gallery[npid-1]).parent('a');
-        a.click();
-        scroll2('#figure'+(npid-1));
+        var gallery = $('figure img');
+        if (gallery.length >= npid)
+        {
+          var a = $(gallery[npid-1]).parent('a');
+          a.click();
+        }
       }
     }
-  }
+  }, 1500);
 
   }(jQuery));
 }
