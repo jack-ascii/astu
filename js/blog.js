@@ -1,4 +1,4 @@
-﻿
+
 ja.blog = {
 	archive: [],
 	labels: [],
@@ -159,6 +159,10 @@ ja.blog.digest = function (options) {
 				}
 			}
 		}
+
+		ja.blog.posts.sort(function(a, b) {
+			return b.dateHeader.localeCompare(a.dateHeader);
+		});
 
 		ja.cache.set('blog.labels', ja.blog.labels);
 		ja.cache.set('blog.posts', ja.blog.posts);
